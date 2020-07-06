@@ -1,0 +1,12 @@
+﻿; ===========================================================
+; Usuario
+; ===========================================================
+#Usuario
+Integer,Id,Id#
+String,Nif,Nif#
+String,Nombre,Nomb
+
+#UsuarioSmall
+Integer,Id,i#
+String,Nif,n#
+String,Descripcion,d

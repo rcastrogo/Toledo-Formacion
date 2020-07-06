@@ -1,0 +1,14 @@
+*{font-family: Verdana, Arial, Helvetica, sans-serif;}
+ 
+body{ margin:0; padding:0 }
+
+.footer-container {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #009688;
+  color: #fff;
+  text-align: center;
+  padding:30px;
+}

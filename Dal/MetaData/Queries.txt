@@ -1,0 +1,9 @@
+
+; ===========================================================
+; Dal.Repositories.UsuariosRepository
+; ===========================================================
+#Dal.Repositories.UsuariosRepository.OrderBy%Id ASC
+#Dal.Repositories.UsuariosRepository.Delete%DELETE FROM [Usuario] WHERE Id={0}
+#Dal.Repositories.UsuariosRepository.Select%SELECT Id, Nif, Nombre, Descripcion, FechaDeAlta FROM [Usuario]
+#Dal.Repositories.UsuariosRepository.Insert%INSERT INTO [Usuario] (Nif, Nombre, Descripcion, FechaDeAlta) VALUES({0}, {1}, {2}, GETDATE()); SELECT @@IDENTITY;
+#Dal.Repositories.UsuariosRepository.Update%UPDATE [Usuario] SET Nif = {1}, Nombre = {2}, Descripcion = {3} WHERE Id={0}

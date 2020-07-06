@@ -1,0 +1,11 @@
+ 
+; ===========================================================
+; Negocio.Entities.Usuario
+; ===========================================================
+#Negocio.Entities.Usuario
+ 0, _id                           , Integer
+ 1, _nif                       
+ 2, _nombre                  
+ 3, _descripcion                   
+ 4, _fechaDeAlta                  , datetime
+                      

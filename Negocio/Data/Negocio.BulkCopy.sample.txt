@@ -1,0 +1,55 @@
+using System.Collections.Generic;
+using Negocio.Core;
+using Dal.Repositories.Transportistas;
+
+namespace Entities.Transportistas.BulkCopy
+{
+    public partial class Helper
+    {
+        private Dal.Core.DbContext _context;
+
+        public Helper(Dal.Core.DbContext context)
+        {
+            _context = context;
+        }
+
+        public List<string> Suspensiones = new List<string>();
+        public List<string> Otros = new List<string>();
+        public List<string> Animales = new List<string>();
+        public List<string> Transportes = new List<string>();
+
+        public void Save()
+        {
+            IDataReader __dr = null;
+            // ==============================================================================================================================
+            // Otros Animales
+            // ==============================================================================================================================
+            __dr = new System.Data.CsvDataReader(Otros.ToArray(), "0|IdAutorizacion;1|Otros");
+            _context.BulkCopy("Transportista_AUT_A_OTROS", __dr, "IdAutorizacion|IdAutorizacion#Otros|Descripcion".Split("#"));
+            // ==============================================================================================================================
+            // Animales
+            // ==============================================================================================================================
+            __dr = new System.Data.CsvDataReader(Animales.ToArray(), "0|IdAutorizacion;1|IdTipoAnimal");
+            _context.BulkCopy("Transportista_AUT_A_DATA", __dr, "IdAutorizacion|IdAutorizacion#IdTipoAnimal|IdTipoAnimal".Split("#"));
+            // =======================================================================================================================================
+            // Transportes
+            // =======================================================================================================================================
+            __dr = new System.Data.CsvDataReader(Transportes.ToArray(), "0|IdAutorizacion;1|IdTipoTransporte");
+            _context.BulkCopy("Transportista_AUT_T_DATA", __dr, "IdAutorizacion|IdAutorizacion#IdTipoTransporte|IdTipoTransporte".Split("#"));
+            // ===============================================================================================================================================
+            // Suspensiones
+            // ===============================================================================================================================================
+            __dr = new System.Data.CsvDataReader(Suspensiones.ToArray(), "0|IdTransportista;1|Tipo;2|Fecha;3|Motivo");
+            _context.BulkCopy("Transportista_SUS", __dr, "IdTransportista|IdTransportista#Tipo|Tipo#Fecha|F_Hasta#Motivo|Observaciones".Split("#"));
+        }
+
+    }
+}
+
+// Dim __BulkCopy As New BulkCopy.Helper(__dbContext)
+// Animales
+// For Each _animal As String In __statusData.Animales.Split(",".ToArray(), StringSplitOptions.RemoveEmptyEntries)
+// __BulkCopy.Animales.Add(String.Format("{0};{1}", .Id, _animal))
+// Next
+
+//__BulkCopy.save();
