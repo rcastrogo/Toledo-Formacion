@@ -33,11 +33,22 @@
       <TO4500:PageHeaderControl ID="PageHeaderControl1" runat="server" />
     </div>
 
-    <div class="w3-container w3-teal w3-margin w3-center">
-      <h2>Datos del usuario</h2>
+    <div class="w3-container w3-teal w3-margin">
+      <h2>Datos del usuario <a href="../Default.aspx" class="w3-right"><i class="fa fa-2x fa-home"></i></a> </h2>
     </div>
 
-    <div class="w3-container w3-padding w3-card-2 w3-margin">
+    <div class="w3-container w3-padding w3-card-2 w3-margin" style="margin-bottom:6em !important">
+
+      <div class="w3-right-align">
+        <asp:Button ID="btnSave" runat="server" Text="Grabar" OnClick="btnSave_Click" class="w3-btn w3-blue-grey" />
+        <asp:Button ID="btnDelete" runat="server" Text="Borrar" OnClick="btnDelete_Click" class="w3-btn w3-blue-grey" />
+        <asp:Button ID="btnNew" runat="server" Text="Nuevo" OnClick="btnNew_Click" class="w3-btn w3-blue-grey" />
+        <asp:Button ID="btnEdit" runat="server" Text="Editar" OnClick="btnEdit_Click" class="w3-btn w3-blue-grey" />
+      </div>
+
+      <div class="w3-container w3-center w3-border-bottom w3-border-top w3-margin-top" style="min-height:2em;">
+        <asp:label ID="txtMessage" CssClass="w3-text-teal w3-bar-item" runat="server"></asp:label>
+      </div>
 
       <label class="w3-text-teal" for="txtId"><b>Identificador</b></label>
       <asp:TextBox ID="txtId" runat="server" class="w3-input w3-border w3-light-grey"></asp:TextBox>
@@ -54,20 +65,9 @@
       <label class="w3-text-teal" for="txtFechaDeAlta"><b>Fecha de alta</b></label>
       <asp:TextBox ID="txtFechaDeAlta" runat="server" class="w3-input w3-border w3-light-grey"></asp:TextBox>
 
-      <div class="w3-container w3-margin-top w3-center w3-border" style="min-height:2em;">
-        <asp:label ID="txtMessage" CssClass="w3-text-teal w3-bar-item" runat="server"></asp:label>
-      </div>
 
-      <div class="w3-container w3-margin-top w3-center">
-        <asp:Button ID="btnSave" runat="server" Text="Grabar" OnClick="btnSave_Click" class="w3-btn w3-blue-grey" />
-      </div>
 
     </div>
-
-    <div class="w3-container w3-padding w3-center w3-margin">
-      <a href="../Default.aspx"><i class="fa fa-3x fa-home"></i></a>
-    </div>
- 
 
     <div class="footer-container">
       <TO4500:PageFooterControl ID="PageFooterControl" runat="server" />

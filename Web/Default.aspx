@@ -17,8 +17,28 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script type="text/javascript">
 
+    var __users = (function(){
+
+      var __btn;
+      var __container;
+
+      function __init() {
+        __btn = $('#btnLoadUsers')[0];          // document.getElementById('btnLoadUsers');
+        __container = $('#users-container')[0]; // document.getElementById('users-container');
+        __btn.onclick = __loadUsers;
+      }
+
+      function __loadUsers() {
+        console.log("Carga de usuarios");
+        __container.innerHTML = 'Rafa';
+      }
+
+      return { init : __init };
+
+    })();
+
     $(document).ready(function() {
-      console.log( "ready!" );
+      __users.init();
     });
 
   </script>
@@ -42,6 +62,14 @@
         <li><a href="api/test.ashx?action=users.all">Usuarios</a><span class="w3-tiny"> (JSON)</span></li>
         <li><a href="api/test.ashx?action=users.item&id=1">Usuario</a><span class="w3-tiny"> (JSON)</span></li>
       </ul>
+    </div>
+
+    <div class="w3-center">
+      <input type="button" id="btnLoadUsers" value="Cargar usuarios" class="w3-btn w3-blue-grey" />
+    </div>
+
+    <div id="users-container" class="w3-container w3-padding w3-card-2 w3-margin" style="min-height:5em;">
+
     </div>
 
     <div class="footer-container">
