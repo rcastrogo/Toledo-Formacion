@@ -16,9 +16,9 @@ public partial class Pages_Formulario : System.Web.UI.Page
     }
   }
 
-  protected void Button1_Click(object sender, EventArgs e)
+  protected void btnSave_Click(object sender, EventArgs e)
   {
-    TextBox1.Text = "Hola";
+    txtMessage.Text = "Se ha pulsado el botón guardar";
   }
 
 }

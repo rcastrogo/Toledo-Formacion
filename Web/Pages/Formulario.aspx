@@ -33,17 +33,50 @@
       <TO4500:PageHeaderControl ID="PageHeaderControl1" runat="server" />
     </div>
 
+    <div class="w3-container w3-teal w3-margin w3-center">
+      <h2>Datos del usuario</h2>
+    </div>
+
+    <div class="w3-container w3-padding w3-card-2 w3-margin">
+
+      <label class="w3-text-teal" for="txtId"><b>Identificador</b></label>
+      <asp:TextBox ID="txtId" runat="server" class="w3-input w3-border w3-light-grey"></asp:TextBox>
+
+      <label class="w3-text-teal" for="txtNif"><b>Nif</b></label>
+      <asp:TextBox ID="txtNif" runat="server" class="w3-input w3-border w3-light-grey"></asp:TextBox>
+
+      <label class="w3-text-teal" for="txtNombre"><b>Nombre</b></label>
+      <asp:TextBox ID="txtNombre" runat="server" class="w3-input w3-border w3-light-grey"></asp:TextBox>
+
+      <label class="w3-text-teal" for="txtDescripcion"><b>Descripción</b></label>
+      <asp:TextBox ID="txtDescripcion" runat="server" class="w3-input w3-border w3-light-grey"></asp:TextBox>
+
+      <label class="w3-text-teal" for="txtFechaDeAlta"><b>Fecha de alta</b></label>
+      <asp:TextBox ID="txtFechaDeAlta" runat="server" class="w3-input w3-border w3-light-grey"></asp:TextBox>
+
+      <div class="w3-container w3-margin-top w3-center w3-border" style="min-height:2em;">
+        <asp:label ID="txtMessage" CssClass="w3-text-teal w3-bar-item" runat="server"></asp:label>
+      </div>
+
+      <div class="w3-container w3-margin-top w3-center">
+        <asp:Button ID="btnSave" runat="server" Text="Grabar" OnClick="btnSave_Click" class="w3-btn w3-blue-grey" />
+      </div>
+
+    </div>
+
+    <div class="w3-container w3-padding w3-center w3-margin">
+      <a href="../Default.aspx"><i class="fa fa-3x fa-home"></i></a>
+    </div>
+ 
 
     <div class="footer-container">
       <TO4500:PageFooterControl ID="PageFooterControl" runat="server" />
     </div>
 
-  <div style="display: none">
-  </div>
+    <div style="display: none">
 
-    <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+    </div>
 
-    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 
   </form>
 

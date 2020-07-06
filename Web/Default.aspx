@@ -32,10 +32,17 @@
       <TO4500:PageHeaderControl ID="PageHeaderControl1" runat="server" />
     </div>
 
-    <ul class="w3-ul w3-margin">
-      <li><a href="api/test.ashx?action=users.all">Lista de todos los usuarios</a></li>
-      <li><a href="api/test.ashx?action=users.item&id=1">Usuario con id = 1</a></li>
-    </ul>
+    <div class="w3-container w3-teal w3-margin w3-center">
+      <h2>Página de inicio</h2>
+    </div>
+
+    <div class="w3-container w3-padding w3-card-2 w3-margin">
+      <ul class="w3-ul w3-margin">
+        <li><a href="Pages/Formulario.aspx">Formulario</a><span class="w3-tiny"> (WebForms)</span></li>
+        <li><a href="api/test.ashx?action=users.all">Usuarios</a><span class="w3-tiny"> (JSON)</span></li>
+        <li><a href="api/test.ashx?action=users.item&id=1">Usuario</a><span class="w3-tiny"> (JSON)</span></li>
+      </ul>
+    </div>
 
     <div class="footer-container">
       <TO4500:PageFooterControl ID="PageFooterControl" runat="server" />
