@@ -151,7 +151,10 @@ public partial class Pages_Formulario : System.Web.UI.Page
     int __id = 0;
     if (Request.QueryString["id"] != string.Empty) { 
       int.TryParse(Request.QueryString["id"], out __id);
-      if (__id < 1) return;
+      if (__id < 1) {
+        txtMessage.Text = "Identificador incorrecto";
+        return;
+      }
     }
     // ==================================================
     // Cargar los datos del usuario

@@ -19,6 +19,7 @@
   <script type="text/javascript">
 
     $(document).ready(function() {
+      //debugger;
       console.log( "ready!" );
     });
 
@@ -27,7 +28,7 @@
 </head>
 <body>
 
-  <form id="form1" runat="server">
+  <form id="form1" runat="server" style="padding-bottom:6em !important">
 
     <div class="w3-container w3-teal w3-xxlarge w3-center">
       <TO4500:PageHeaderControl ID="PageHeaderControl1" runat="server" />
@@ -37,7 +38,7 @@
       <h2>Datos del usuario <a href="../Default.aspx" class="w3-right"><i class="fa fa-2x fa-home"></i></a> </h2>
     </div>
 
-    <div class="w3-container w3-padding w3-card-2 w3-margin" style="margin-bottom:6em !important">
+    <div class="w3-container w3-padding w3-card-2 w3-margin">
 
       <div class="w3-right-align">
         <asp:Button ID="btnSave" runat="server" Text="Grabar" OnClick="btnSave_Click" class="w3-btn w3-blue-grey" />
