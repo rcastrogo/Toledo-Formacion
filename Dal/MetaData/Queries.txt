@@ -7,3 +7,12 @@
 #Dal.Repositories.UsuariosRepository.Select%SELECT Id, Nif, Nombre, Descripcion, FechaDeAlta FROM [Usuario]
 #Dal.Repositories.UsuariosRepository.Insert%INSERT INTO [Usuario] (Nif, Nombre, Descripcion, FechaDeAlta) VALUES({0}, {1}, {2}, GETDATE()); SELECT @@IDENTITY;
 #Dal.Repositories.UsuariosRepository.Update%UPDATE [Usuario] SET Nif = {1}, Nombre = {2}, Descripcion = {3} WHERE Id={0}
+
+; ===========================================================
+; Dal.Repositories.TiposDeUsuarioRepository
+; ===========================================================
+#Dal.Repositories.TiposDeUsuarioRepository.OrderBy%Id ASC
+#Dal.Repositories.TiposDeUsuarioRepository.Delete%DELETE FROM [TipoDeUsuario] WHERE Id={0}
+#Dal.Repositories.TiposDeUsuarioRepository.Select%SELECT Id, Descripcion FROM [TipoDeUsuario]
+#Dal.Repositories.TiposDeUsuarioRepository.Insert%INSERT INTO [TipoDeUsuario] ( Descripcion ) VALUES({0}); SELECT @@IDENTITY;
+#Dal.Repositories.TiposDeUsuarioRepository.Update%UPDATE [TipoDeUsuario] SET Descripcion = {1} WHERE Id={0}

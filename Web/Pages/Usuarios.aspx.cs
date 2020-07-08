@@ -11,4 +11,10 @@ public partial class Usuarios_Formulario : System.Web.UI.Page
 
   }
 
+  public String GetTiposDeUsuario()
+  {
+    return new TiposDeUsuario().Load()
+                               .ToJsonString();
+  }
+
 }

@@ -5,7 +5,7 @@ using System.Web;
 namespace Toledo.HttpHandlers
 {
 
- public class TestHttpHandler : IHttpHandler, System.Web.SessionState.IRequiresSessionState
+ public class TiposDeUsuarioHttpHandler : IHttpHandler, System.Web.SessionState.IRequiresSessionState
   {
     private ContextWrapper _context;
 
@@ -16,13 +16,9 @@ namespace Toledo.HttpHandlers
       Func<ActionResult> __proc = __doDefault;
       switch (_context.GetItem("action").ToLower())
       {
-        case "users.all":
-          __proc = new Controllers.TestController(_context).GetUsuarios;
-          break;
-
-        case "users.item":
-          __proc = new Controllers.TestController(_context).GetUsuario;
-          break;
+        case "all":
+          __proc = new Controllers.TiposDeUsuarioController(_context).GetAll;
+        break;
       }
       try
       {

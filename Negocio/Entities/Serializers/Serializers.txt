@@ -10,3 +10,10 @@ String,Nombre,Nomb
 Integer,Id,i#
 String,Nif,n#
 String,Descripcion,d
+
+; ===========================================================
+; TipoDeUsuario
+; ===========================================================
+#TipoDeUsuario
+Integer,Id,Id#
+String,Descripcion,Des

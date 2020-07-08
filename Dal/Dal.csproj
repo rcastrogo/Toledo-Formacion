@@ -56,6 +56,7 @@
     <Compile Include="ParameterContainer.cs" />
     <Compile Include="QueryBuilder.cs" />
     <Compile Include="Repositories\DynamicRepository.cs" />
+    <Compile Include="Repositories\TiposDeUsuarioRepository.cs" />
     <Compile Include="Repositories\UsuariosRepository.cs" />
     <Compile Include="RepositoryBase.cs" />
     <Compile Include="SqlEngine.cs" />

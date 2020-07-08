@@ -45,7 +45,9 @@
   <ItemGroup>
     <Compile Include="Data\CsvDataReader.cs" />
     <Compile Include="Data\ObjectDataReader.cs" />
+    <Compile Include="Entities\TipoDeUsuario.cs" />
     <Compile Include="Entities\Usuario.cs" />
+    <Compile Include="Entities\TiposDeUsuario.cs" />
     <Compile Include="Entities\Usuarios.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="EntityList.cs" />

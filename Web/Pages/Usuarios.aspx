@@ -13,28 +13,62 @@
   <link rel="stylesheet" href="../css/Estilo.css"/>
   <style type="text/css" media="screen">
 
+    .w3-vertical-align-middle td{ vertical-align:middle !important; }
+
   </style>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script type="text/javascript">
 
+    var _tipoDeUsuario = <%= GetTiposDeUsuario() %>;
 
+    // =============================================================================================
+    // Utils
+    // =============================================================================================
     String.prototype.format = function() {
-        var args = arguments;     
-        return this.replace(/\{(\d+)\}/g, function(m, i) { return args[i]; });
+      var args = arguments;     
+      return this.replace(/\{(\d+)\}/g, function(m, i) { return args[i]; });
     }
 
+    var toArray  = function(v) { return Array.prototype.slice.call(v); }
 
+
+    // =============================================================================================
+    // Gestión de usuario
+    // =============================================================================================
     var __users = (function(){
 
       var END_POINT  = '../Api/Test.ashx';
       var __btn;
       var __container;
+      var __messageContainer;
 
       function __init() {
-        __btn = $('#btnLoadUsers')[0];          // document.getElementById('btnLoadUsers');
-        __container = $('#users-container')[0]; // document.getElementById('users-container');
+        __btn              = $('#btnLoadUsers')[0];     // document.getElementById('btnLoadUsers');
+        __container        = $('#users-container')[0];  // document.getElementById('users-container');
+        __messageContainer = $('#message-container')[0];// document.getElementById('message-container');
         __btn.onclick = __loadUsers;
+      }
+
+      function __onCheckChange(sender) {
+        __messageContainer.innerHTML = 'CheckClick: {0}'.format(this.id);
+      }
+
+      function __onButtonClick(sender) {
+        __messageContainer.innerHTML = 'ButtonClick: {0}'.format(this.id);
+      }
+
+      function __setEventHandlers() {
+        // ===========================================================================
+        // ChecksBoxes
+        // ===========================================================================
+        var __checks = toArray(__container.querySelectorAll('input[type=checkbox]'));
+        __checks.forEach( function(check){ check.onclick = __onCheckChange; });
+        // ===========================================================================
+        // Buttons
+        // ===========================================================================
+        var __buttons = document.querySelectorAll('div.js-btn');
+        __buttons.forEach( function(btn){ btn.onclick = __onButtonClick; });
       }
 
       function __loadUsers() {
@@ -43,6 +77,7 @@
         // Inicialización previa a la carga de usuario
         // ========================================================
         __container.innerHTML = 'Cargando datos...';
+
         // ========================================================
         // Invocar la carga asincrona de los usuarios
         // ========================================================
@@ -60,7 +95,10 @@
             // ==================================================================================================
             // Crear la UI una vez que los datos están disponibles
             // ==================================================================================================
-            var __item_template = '<tr>' + 
+            var __item_template = '<tr class="w3-vertical-align-middle">' + 
+                                  '  <td>' + 
+                                  '    <input type="checkbox" id="user-check-{0}" />' + 
+                                  '  </td>' +
                                   '  <td>{0}</td><td>{2}</td><td>{1}</td><td>{3}</td><td>{4}</td>' +
                                   '  <td>' + 
                                   '    <a class="w3-button w3-hover-black" href="Formulario.aspx?id={0}" target="_blank">' +
@@ -70,6 +108,7 @@
                                   '</tr>';
             var __container_template = '<table class="w3-table w3-striped w3-bordered w3-hoverable">' + 
                                        '  <tr>' + 
+                                       '    <th></th>' +
                                        '    <th>Id</th>' +
                                        '    <th>Nif</th>' +
                                        '    <th>Nombre</th>' +
@@ -99,9 +138,13 @@
                                         return html;
                                       }, '');
             __container.innerHTML = __container_template.format(__innerHTML);
-
+            // =============================================
+            // Establecer manejadores de eventos
+            // =============================================
+            __setEventHandlers();
             
          });
+
       }
 
       return { init : __init};
@@ -130,9 +173,11 @@
     <div class="w3-container">
       <div class="w3-bar w3-black">
         <div class="w3-bar-item w3-hover-green w3-right" id="btnLoadUsers"><i class="fa fa-refresh"></i></div>
-        <div class="w3-bar-item w3-hover-green" id="btnEditUser"><i class="fa fa-edit"></i></div>
-        <div class="w3-bar-item w3-hover-green" id="btnAddUser"><i class="fa fa-plus"></i></div>
-        <div class="w3-bar-item w3-hover-green" id="btnDeleteUser"><i class="fa fa-trash"></i></div>
+        <div class="w3-bar-item w3-hover-green js-btn" id="btnEditUser"><i class="fa fa-edit"></i></div>
+        <div class="w3-bar-item w3-hover-green js-btn" id="btnAddUser"><i class="fa fa-plus"></i></div>
+        <%--<div class="w3-bar-item w3-hover-green js-btn" id="btnDoAction"><i class="fa fa-user"></i></div>--%>
+        <div class="w3-bar-item w3-hover-green js-btn" id="btnDeleteUser"><i class="fa fa-trash"></i></div>
+        <div class="w3-bar-item" id="message-container"></div>
       </div>
     </div>
 

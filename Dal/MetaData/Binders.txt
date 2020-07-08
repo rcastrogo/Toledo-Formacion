@@ -9,3 +9,9 @@
  3, _descripcion                   
  4, _fechaDeAlta                  , datetime
                       
+; ===========================================================
+; Negocio.Entities.TipoDeUsuario
+; ===========================================================
+#Negocio.Entities.TipoDeUsuario
+ 0, _id                           , Integer               
+ 1, _descripcion                   
