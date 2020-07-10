@@ -24,7 +24,7 @@ namespace Toledo.Controllers
     {
 
       //TipoDeUsuario __tipo = new TipoDeUsuario();
-      //__tipo.Descripcion = "Solo lectura";
+      //__tipo.Descripcion = "Prueba";
       //__tipo.Save();
 
       var __tipos = new TiposDeUsuario().Load();

@@ -53,7 +53,7 @@ namespace Toledo.Core
             string __result = "{ \"result\" : \"ok\" ";
             for (int x = 0; x <= entityNames.Length - 1; x++)
             {
-                __result += string.Format(", \"{0}\" : {1}", entityNames[x], data[x]);
+                __result += string.Format(", \"{0}\" : {1}", entityNames[x], data[x].ToJsonString());
             }
             __result += "}";
             return new JsonActionResult(__result);

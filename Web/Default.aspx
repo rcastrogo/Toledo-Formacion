@@ -39,7 +39,7 @@
         <li><a href="Pages/Usuarios.aspx">Listado de usuarios</a><span class="w3-tiny"> (Ajax)</span></li>
         <li><a href="api/test.ashx?action=users.all">Usuarios</a><span class="w3-tiny"> (JSON)</span></li>
         <li><a href="api/test.ashx?action=users.item&id=1">Usuario</a><span class="w3-tiny"> (JSON)</span></li>
-        <li><a href="api/tiposDeusuario.ashx?action=all">Tipos de usuario</a><span class="w3-tiny"> (JSON)</span></li>
+        <li><a href="api/tiposDeUsuario.ashx?action=all">Tipos de usuario</a><span class="w3-tiny"> (JSON)</span></li>
       </ul>
     </div>
 

@@ -23,6 +23,18 @@ namespace Toledo.HttpHandlers
         case "users.item":
           __proc = new Controllers.TestController(_context).GetUsuario;
           break;
+
+        case "users.delete":
+          __proc = new Controllers.TestController(_context).DeleteUsuarios;
+          break;
+        
+        case "users.new":
+          __proc = new Controllers.TestController(_context).NewUsuario;
+          break;
+        
+        case "users.edit":
+          __proc = new Controllers.TestController(_context).EditUsuario;
+          break;
       }
       try
       {

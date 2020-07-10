@@ -20,7 +20,7 @@ namespace Dal.Repositories
     private static string __toQuery(Dictionary<string, string> @params)
     {
       QueryBuilder builder = new QueryBuilder(@params);
-      builder.AndListOfIntegers("Id", "Ids");
+      builder.AndListOfIntegers("Ids", "Id");
       builder.AndString("Nif");
       builder.AndStringLike("Nombre");
       return builder.ToQueryString();
