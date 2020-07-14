@@ -40,6 +40,8 @@
         <li><a href="api/test.ashx?action=users.all">Usuarios</a><span class="w3-tiny"> (JSON)</span></li>
         <li><a href="api/test.ashx?action=users.item&id=1">Usuario</a><span class="w3-tiny"> (JSON)</span></li>
         <li><a href="api/tiposDeUsuario.ashx?action=all">Tipos de usuario</a><span class="w3-tiny"> (JSON)</span></li>
+        <li><a href="ws/usuarioswebservice.asmx">UsuariosWebservice</a><span class="w3-tiny"> (.asmx)</span></li>
+        <li><a href="ws/Service1.svc">Service1</a><span class="w3-tiny"> (.svc)</span></li>
       </ul>
     </div>
 
