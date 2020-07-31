@@ -35,6 +35,9 @@ namespace Toledo.HttpHandlers
         case "users.edit":
           __proc = new Controllers.TestController(_context).EditUsuario;
           break;
+        case "pdf-file":
+          __proc = new Controllers.TestController(_context).GetPdfFile;
+          break;
       }
       try
       {

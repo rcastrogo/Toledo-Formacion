@@ -1,16 +1,17 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Hosting;
 using Negocio.Entities;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 using Toledo.Core;
 
+namespace Toledo.Controllers {
 
-namespace Toledo.Controllers
-{
-
-  public class TestController : BaseController
-  {
+  public class TestController : BaseController {
 
 
     #region CONSTRUCTORES
@@ -37,13 +38,15 @@ namespace Toledo.Controllers
       // Validación de parámetros de entrada
       // =========================================================================================
       int __id = Context.ParseInteger("id", 0);
-      if (__id < 1) throw new Exception("El identificador no es válido."); 
+      if (__id < 1) throw new Exception("El identificador no es válido.");
       // =========================================================================================
       // Cargar el usuario
       // =========================================================================================
-      using (Dal.Core.DbContext __dbContext = new Dal.Core.DbContext()) {
+      using (Dal.Core.DbContext __dbContext = new Dal.Core.DbContext())
+      {
         Usuario __usuario = new Negocio.Entities.Usuario(__dbContext).Load(__id);
-        if(__usuario.Id == 0) {
+        if (__usuario.Id == 0)
+        {
           String __message = String.Format("No se ha encontrado el usuario con el Id: {0}", __id);
           throw new Exception(__message);
         }
@@ -63,9 +66,10 @@ namespace Toledo.Controllers
 
       List<int> __deleted = new List<int>();
       List<int> __notDeleted = new List<int>();
-      foreach( Usuario __target in new Usuarios().Load(__params))
+      foreach (Usuario __target in new Usuarios().Load(__params))
       {
-        if (__target.Id > 3) {
+        if (__target.Id > 3)
+        {
           __target.Delete();
           __deleted.Add(__target.Id);
         }
@@ -74,9 +78,9 @@ namespace Toledo.Controllers
           __notDeleted.Add(__target.Id);
         }
       }
-      return JsonActionResult.Success(new string[] { "deleted", 
+      return JsonActionResult.Success(new string[] { "deleted",
                                                      "notDeleted" },
-                                      new Object[] { __deleted.ToArray(), 
+                                      new Object[] { __deleted.ToArray(),
                                                      __notDeleted.ToArray()});
     }
 
@@ -86,13 +90,15 @@ namespace Toledo.Controllers
       // Validación de parámetros de entrada
       // =========================================================================================
       int __id = Context.ParseInteger("id", 0);
-      if (__id < 1) throw new Exception("El identificador no es válido."); 
-      using (Dal.Core.DbContext __dbContext = new Dal.Core.DbContext()) {
+      if (__id < 1) throw new Exception("El identificador no es válido.");
+      using (Dal.Core.DbContext __dbContext = new Dal.Core.DbContext())
+      {
         // =======================================================================================
         // Cargar el usuario
         // =======================================================================================
         Usuario __target = new Negocio.Entities.Usuario(__dbContext).Load(__id);
-        if(__target.Id == 0) {
+        if (__target.Id == 0)
+        {
           String __message = String.Format("No se ha encontrado el usuario con el Id: {0}", __id);
           throw new Exception(__message);
         }
@@ -124,22 +130,23 @@ namespace Toledo.Controllers
 
     private T __default<T>(object data, T @default)
     {
+    public ActionResult GetPdfFile(){
+            return new PdfActionResult(ms.ToArray(), "document.pdf");
+    }
       if (data is DBNull) return (T)@default;
       return (T)data;
     }
 
     [Serializable]
-    public class Estado
-    {
-      public String codigo = "";
-      public String descripcion = "";
+    public class Estado {
+    public String codigo = "";
+    public String descripcion = "";
 
-      public Estado(String codigo, String descripcion)
-      {
-        this.codigo = codigo;
-        this.descripcion = descripcion;
-      }
+    public Estado(String codigo, String descripcion)  {
+      this.codigo = codigo;
+      this.descripcion = descripcion;
     }
+  }
 
   }
 }
