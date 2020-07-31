@@ -128,11 +128,33 @@ namespace Toledo.Controllers {
       return JsonActionResult.Success("usuario", __target);
     }
 
-    private T __default<T>(object data, T @default)
-    {
     public ActionResult GetPdfFile(){
+
+      byte[] __pdfContent = File.ReadAllBytes(HostingEnvironment.MapPath(@"~/App_Data/Documento.pdf"));
+      byte[] __imageContent = File.ReadAllBytes(HostingEnvironment.MapPath(@"~/App_Data/Imagen.jpg"));
+
+      using (Stream inputPdfStream = new MemoryStream(__pdfContent)) {
+        using (Stream inputImageStream = new MemoryStream(__imageContent))  {
+          using (MemoryStream ms = new MemoryStream()) {
+            var reader = new PdfReader(inputPdfStream);
+            using (PdfStamper stamper = new PdfStamper(reader, ms, '\0', true)) {
+              var pdfContentByte = stamper.GetOverContent(3);
+              Image image = Image.GetInstance(inputImageStream);
+              image.SetAbsolutePosition(300, 100);
+              image.BorderWidth = 0;
+              image.Alignment = Element.ALIGN_RIGHT;
+              float percentage2 = 0.0f;
+              percentage2 = 150 / image.Width;
+              image.ScalePercent(percentage2 * 100);
+              pdfContentByte.AddImage(image);    
+            }
+            // File.WriteAllBytes("D:\\Firmados\\nombre-fichero.pdf", ms.ToArray());
             return new PdfActionResult(ms.ToArray(), "document.pdf");
+          }
+        }
+      }
     }
+    private T __default<T>(object data, T @default) {
       if (data is DBNull) return (T)@default;
       return (T)data;
     }
