@@ -10,7 +10,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite1/Toledo", "http://localhost:8080/Toledo", "{36FC5AC3-C51F-49E3-BCBD-071560EC2C5E}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		ProjectReferences = "{f4894e07-4b3f-4a5a-af28-ee9e7bb0556e}|Toledo.Negocio.dll;{315C12B7-D53C-4BF0-A70B-E8D8F170AE1B}|Toledo.Dal.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Toledo(1)"
 		Debug.AspNetCompiler.PhysicalPath = "Web\"

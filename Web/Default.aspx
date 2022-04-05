@@ -12,11 +12,11 @@
   <link rel="stylesheet" href="./css/Estilo.css">
   <style type="text/css" media="screen">
 
-  </style>
 
+  </style>
+  <script type="text/javascript" src="js/Utils.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script type="text/javascript">
-
 
   </script>
 
@@ -26,7 +26,6 @@
   <form id="form1" runat="server" style="padding-bottom:6em !important">
 
     <div class="w3-container w3-teal w3-xxlarge w3-center">
-      <TO4500:PageHeaderControl ID="PageHeaderControl1" runat="server" />
     </div>
 
     <div class="w3-container w3-teal w3-margin w3-center">
@@ -45,8 +44,33 @@
       </ul>
     </div>
 
+    <div class="w3-container w3-padding w3-card-2 w3-margin w3-hide">
+      <div class="w3-container">
+        <h1>Token</h1>
+      </div>
+      <button class="w3-button w3-gray" type="button" style="width:100%" onclick="getToken()">Enviar</button>
+      <code id="token-result-container" class="w3-input w3-border w3-light-grey w3-code" style="width:100%;font-size: 12px;white-space: break-spaces;">
+      </code>
+    </div>
+
+    <div class="w3-container w3-padding w3-card-2 w3-margin w3-hide">
+      <div class="w3-container">
+        <h1>Captación</h1>
+      </div>
+      <div class="w3-container w3-padding">
+        <textarea id="txtRequest" class="w3-input w3-border w3-light-grey w3-code" rows="15" style="width:100%;font-size: 12px">
+
+        </textarea>
+        <button class="w3-button w3-gray" id="btnEnviar" type="button" style="width:100%" onclick="sendCaptacion()">Enviar</button>
+         <code id="result-container" class="w3-input w3-border w3-light-grey w3-code" style="width:100%;font-size: 12px;white-space: break-spaces;">
+
+         </code>
+      </div>
+
+
+    </div>
+
     <div class="footer-container">
-      <TO4500:PageFooterControl ID="PageFooterControl" runat="server" />
     </div>
 
   </form>

@@ -23,9 +23,9 @@
     this.OnDocumentReady = module.emptyFn;
     document.addEventListener("DOMContentLoaded", function(){       
       document.__DH = new module.DragHelper();
-      module.DocManager.OnDocumentReady();  
+      if(module.DocManager.OnDocumentReady) module.DocManager.OnDocumentReady();  
     }, false);
-    return this
+    return this;
   } ();
 
   module.toDictionary = function(arr, key){
@@ -2461,9 +2461,9 @@ MAPA.BasicExport = function(){
                    flush : function(){ __flush(); return this; }
   };
 
-  module.trace
-        .log('Page_load@{document.title}'.format())
-        .flush();
+  //module.trace
+  //      .log('Page_load@{document.title}'.format())
+  //      .flush();
 }(MAPA, window, $Ajax));
 
 // ========================================================================================
