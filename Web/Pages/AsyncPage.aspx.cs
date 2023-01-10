@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Runtime.Serialization;
+using System.Web.UI;
 using Negocio;
 using Negocio.Core;
 using Negocio.Entities;
@@ -10,8 +13,31 @@ public partial class Usuarios_Formulario : Toledo.Core.Async.AsyncPage
 
   protected void Page_Load(object sender, EventArgs e)
   {
-
+    var jsConfig = new JSConfigContainer();
+    jsConfig.Add("url", "http://google.com")
+            .Add("dato", 5)
+            .Add("objeto", new Usuario())
+            .Register(this);
   }
+
+  public class JSConfigContainer: Dictionary<string, object>
+  {
+    public new JSConfigContainer Add(string key, object value)
+    {
+      base.Add(key, value);
+      return this;
+    }
+
+    public void Register(Page page)
+    {
+      page.ClientScript
+          .RegisterStartupScript(this.GetType(), 
+                                 "configScript",
+                                 string.Format("var serverValues = {0};", this.ToJsonStringExt()),
+                                 true);
+    }
+  }
+
 
   protected string ActionOne()
   {

@@ -4,6 +4,7 @@ namespace Negocio
   using Microsoft.VisualBasic.CompilerServices;
   using Negocio.Core;
   using System.IO;
+  using System.Runtime.Serialization;
   using System.Runtime.Serialization.Json;
   using System.Text;
   using System.Xml.Serialization;
@@ -56,6 +57,20 @@ namespace Negocio
         return Encoding.UTF8.GetString(stream.ToArray());
       }
     }
+
+    public static string ToJsonStringExt<T>(this T value) where T : class
+    {
+      using (MemoryStream stream = new MemoryStream())
+      {
+        var settings = new DataContractJsonSerializerSettings();
+        settings.EmitTypeInformation = EmitTypeInformation.Never;
+        settings.UseSimpleDictionaryFormat = true;
+        DataContractJsonSerializer serializer = new DataContractJsonSerializer(value.GetType(), settings);
+        serializer.WriteObject(stream, value);
+        return Encoding.UTF8.GetString(stream.ToArray());
+      }
+    }
+
 
     public static string ToJsonString<T>(this EntityList<T> values, FieldInfo[] mapInfo) where T : Entity
     {
